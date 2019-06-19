@@ -1,0 +1,109 @@
+---
+openapi: 3.0.2
+info:
+  title: Test
+  version: 1.0.0
+paths:
+  /usuarios:
+    summary: Path used to manage the list of usuarios.
+    description: The REST endpoint/path used to list and create zero or more `usuario`
+      entities.  This path contains a `GET` and `POST` operation to perform the list
+      and create tasks, respectively.
+    get:
+      summary: List All usuarios
+      description: Gets a list of all `usuario` entities.
+      operationId: getusuarios
+      responses:
+        200:
+          description: Successful response - returns an array of `usuario` entities.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/usuario'
+    post:
+      summary: Create a usuario
+      description: Creates a new instance of a `usuario`.
+      operationId: createusuario
+      requestBody:
+        description: A new `usuario` to be created.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/usuario'
+        required: true
+      responses:
+        201:
+          description: Successful response.
+    servers:
+    - url: http://sinelnicof.com/api
+      description: ""
+  /usuarios/{usuarioId}:
+    summary: Path used to manage a single usuario.
+    description: The REST endpoint/path used to get, update, and delete single instances
+      of an `usuario`.  This path contains `GET`, `PUT`, and `DELETE` operations used
+      to perform the get, update, and delete tasks, respectively.
+    get:
+      summary: Get a usuario
+      description: Gets the details of a single instance of a `usuario`.
+      operationId: getusuario
+      responses:
+        200:
+          description: Successful response - returns a single `usuario`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/usuario'
+    put:
+      summary: Update a usuario
+      description: Updates an existing `usuario`.
+      operationId: updateusuario
+      requestBody:
+        description: Updated `usuario` information.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/usuario'
+        required: true
+      responses:
+        202:
+          description: Successful response.
+    delete:
+      summary: Delete a usuario
+      description: Deletes an existing `usuario`.
+      operationId: deleteusuario
+      responses:
+        204:
+          description: Successful response.
+    parameters:
+    - name: usuarioId
+      in: path
+      description: A unique identifier for a `usuario`.
+      required: true
+      schema:
+        type: string
+components:
+  schemas:
+    usuario:
+      title: Root Type for usuario
+      description: Nombre del Usuario
+      required:
+      - usuarioId
+      type: object
+      properties:
+        Nombre:
+          type: string
+        Apellido:
+          type: string
+        FechaNacimiento:
+          format: date
+          type: string
+        usuarioId:
+          description: Id de Usuario
+          type: string
+      example:
+        Nombre: Santiago
+        Apellido: Sinelnicof
+        FechaNacimiento: 2018-01-17
+        usuarioId: "1234"
