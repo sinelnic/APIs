@@ -8,6 +8,10 @@
             "name": "Santiago Sinelnicof",
             "url": "https://www.redhat.com",
             "email": "ssinelni@redhat.com"
+        },
+        "license": {
+            "name": "The Unlicense",
+            "url": "http://unlicense.org"
         }
     },
     "host": "biologeek.orange-labs.fr",
