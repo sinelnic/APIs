@@ -17,7 +17,8 @@
     },
     "servers": [
         {
-            "url": "http://petstore.swagger.io/api"
+            "url": "https://petstore-mock-3scale-apicast-production.apps.cluster-telecom-4fc0.telecom-4fc0.example.opentlc.com:443",
+            "description": "APICast de Mocks"
         }
     ],
     "paths": {
